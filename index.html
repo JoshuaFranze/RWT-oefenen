@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RWT 3F oefenen</title>
+  <meta name="description" content="Rustig oefenen voor de Rekentoets Wiskunde (RWT) op 3F-niveau: 400 oefenvragen, 10 oefentoetsen en een AI Coach.">
+  <meta name="theme-color" content="#f7f5f0">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232f7d6d'/%3E%3Ctext x='32' y='43' font-family='Arial' font-weight='700' font-size='28' fill='white' text-anchor='middle'%3E3F%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tailwind.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="min-h-screen">
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 knop knop-primair">Naar de inhoud</a>
+  <header class="sticky top-0 z-30 backdrop-blur bg-[#f7f5f0]/90 border-b border-[#e6e1d8]">
+    <div class="max-w-5xl mx-auto px-4 py-3 flex items-center gap-3 flex-wrap">
+      <a href="#/" class="flex items-center gap-2 font-extrabold text-lg mr-auto" aria-label="RWT 3F oefenen, naar het overzicht">
+        <span class="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-[#2f7d6d] text-white text-sm">3F</span>
+        <span>RWT oefenen</span>
+      </a>
+      <nav class="flex items-center gap-1 order-3 sm:order-none w-full sm:w-auto overflow-x-auto" aria-label="Hoofdmenu">
+        <a class="nav-link" href="#/" data-nav="home">Overzicht</a>
+        <a class="nav-link" href="#/oefenen" data-nav="oefenen">Oefenen</a>
+        <a class="nav-link" href="#/toetsen" data-nav="toetsen">Toetsen</a>
+      </nav>
+      <button id="sync-pill" type="button" class="text-sm font-bold px-3 py-1.5 rounded-full bg-white border border-[#e6e1d8] text-[#6b7676]" title="Synchronisatie">
+        <span id="sync-dot" class="inline-block w-2 h-2 rounded-full bg-gray-300 mr-1 align-middle"></span><span id="sync-tekst">Sync uit</span>
+      </button>
+      <button id="open-instellingen" type="button" class="knop knop-rand !px-3 !py-2" aria-label="Instellingen">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main" class="max-w-5xl mx-auto px-4 py-6 sm:py-10" tabindex="-1">
+    <noscript><div class="kaart p-6">Deze oefenapp heeft JavaScript nodig. Zet JavaScript aan in je browser.</div></noscript>
+    <div id="app"></div>
+  </main>
+
+  <footer class="max-w-5xl mx-auto px-4 pb-10 text-sm text-[#6b7676]">
+    <p>Gratis oefenplatform voor de RWT op 3F-niveau. De schaalscore is een indicatie, geen officiële Cito-uitslag.</p>
+  </footer>
+
+  <div id="modal-root"></div>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

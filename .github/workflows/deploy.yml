@@ -1,0 +1,62 @@
+name: Deploy naar GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Controleer de vragenbank (950 vragen, antwoorden, normering)
+        run: node tests/check-bank.mjs
+
+      - name: Bouw Tailwind CSS
+        run: npm run build:css
+
+      - name: Site samenstellen
+        run: |
+          mkdir _site
+          cp -r index.html css js _site/
+          touch _site/.nojekyll
+
+      - name: Controleer dat er geen geheimen in de site staan
+        run: |
+          if grep -rEn 'sk-ant-[A-Za-z0-9_-]{20,}|gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{30,}' _site; then
+            echo "::error::Er lijkt een API-key of token in de site te staan!"
+            exit 1
+          fi
+
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

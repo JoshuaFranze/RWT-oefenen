@@ -1,0 +1,12 @@
+{
+  "name": "rwt-oefenen",
+  "private": true,
+  "type": "module",
+  "description": "Oefenplatform voor de Rekentoets Wiskunde (RWT) 3F – vanilla HTML/JS, draait op GitHub Pages.",
+  "scripts": {
+    "test": "node tests/check-bank.mjs",
+    "test:e2e": "node tests/e2e.mjs",
+    "build:css": "npx --yes tailwindcss@3.4.16 -c tools/tailwind.config.cjs -i tools/tailwind.input.css -o css/tailwind.css --minify",
+    "start": "python3 -m http.server 8765"
+  }
+}
